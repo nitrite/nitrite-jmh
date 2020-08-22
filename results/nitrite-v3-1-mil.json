@@ -1,0 +1,444 @@
+[
+    {
+        "jmhVersion" : "1.23",
+        "benchmark" : "org.dizitart.no2.v3.jmh.NitriteBenchmark.queryWithJacksonMapper",
+        "mode" : "avgt",
+        "threads" : 1,
+        "forks" : 1,
+        "jvm" : "/home/anindya/app/java/jdk1.8.0_211/jre/bin/java",
+        "jvmArgs" : [
+            "-Xmx8192m",
+            "-Xmn6144m"
+        ],
+        "jdkVersion" : "1.8.0_211",
+        "vmName" : "Java HotSpot(TM) 64-Bit Server VM",
+        "vmVersion" : "25.211-b12",
+        "warmupIterations" : 3,
+        "warmupTime" : "1500 ms",
+        "warmupBatchSize" : 1,
+        "measurementIterations" : 3,
+        "measurementTime" : "1500 ms",
+        "measurementBatchSize" : 1,
+        "params" : {
+            "dataSetSize" : "1000000",
+            "database" : "SQLITE_FILE"
+        },
+        "primaryMetric" : {
+            "score" : 0.012530923201652928,
+            "scoreError" : 0.0014640725926364007,
+            "scoreConfidence" : [
+                0.011066850609016528,
+                0.013994995794289328
+            ],
+            "scorePercentiles" : {
+                "0.0" : 0.012478779544981907,
+                "50.0" : 0.012490655270892484,
+                "90.0" : 0.012623334789084392,
+                "95.0" : 0.012623334789084392,
+                "99.0" : 0.012623334789084392,
+                "99.9" : 0.012623334789084392,
+                "99.99" : 0.012623334789084392,
+                "99.999" : 0.012623334789084392,
+                "99.9999" : 0.012623334789084392,
+                "100.0" : 0.012623334789084392
+            },
+            "scoreUnit" : "ms/op",
+            "rawData" : [
+                [
+                    0.012478779544981907,
+                    0.012623334789084392,
+                    0.012490655270892484
+                ]
+            ]
+        },
+        "secondaryMetrics" : {
+        }
+    },
+    {
+        "jmhVersion" : "1.23",
+        "benchmark" : "org.dizitart.no2.v3.jmh.NitriteBenchmark.queryWithJacksonMapper",
+        "mode" : "avgt",
+        "threads" : 1,
+        "forks" : 1,
+        "jvm" : "/home/anindya/app/java/jdk1.8.0_211/jre/bin/java",
+        "jvmArgs" : [
+            "-Xmx8192m",
+            "-Xmn6144m"
+        ],
+        "jdkVersion" : "1.8.0_211",
+        "vmName" : "Java HotSpot(TM) 64-Bit Server VM",
+        "vmVersion" : "25.211-b12",
+        "warmupIterations" : 3,
+        "warmupTime" : "1500 ms",
+        "warmupBatchSize" : 1,
+        "measurementIterations" : 3,
+        "measurementTime" : "1500 ms",
+        "measurementBatchSize" : 1,
+        "params" : {
+            "dataSetSize" : "1000000",
+            "database" : "SQLITE_MEMORY"
+        },
+        "primaryMetric" : {
+            "score" : 0.004113901505926971,
+            "scoreError" : 1.6599477062813033E-4,
+            "scoreConfidence" : [
+                0.003947906735298841,
+                0.004279896276555101
+            ],
+            "scorePercentiles" : {
+                "0.0" : 0.004106395417715975,
+                "50.0" : 0.004111288159283062,
+                "90.0" : 0.004124020940781877,
+                "95.0" : 0.004124020940781877,
+                "99.0" : 0.004124020940781877,
+                "99.9" : 0.004124020940781877,
+                "99.99" : 0.004124020940781877,
+                "99.999" : 0.004124020940781877,
+                "99.9999" : 0.004124020940781877,
+                "100.0" : 0.004124020940781877
+            },
+            "scoreUnit" : "ms/op",
+            "rawData" : [
+                [
+                    0.004124020940781877,
+                    0.004106395417715975,
+                    0.004111288159283062
+                ]
+            ]
+        },
+        "secondaryMetrics" : {
+        }
+    },
+    {
+        "jmhVersion" : "1.23",
+        "benchmark" : "org.dizitart.no2.v3.jmh.NitriteBenchmark.queryWithJacksonMapper",
+        "mode" : "avgt",
+        "threads" : 1,
+        "forks" : 1,
+        "jvm" : "/home/anindya/app/java/jdk1.8.0_211/jre/bin/java",
+        "jvmArgs" : [
+            "-Xmx8192m",
+            "-Xmn6144m"
+        ],
+        "jdkVersion" : "1.8.0_211",
+        "vmName" : "Java HotSpot(TM) 64-Bit Server VM",
+        "vmVersion" : "25.211-b12",
+        "warmupIterations" : 3,
+        "warmupTime" : "1500 ms",
+        "warmupBatchSize" : 1,
+        "measurementIterations" : 3,
+        "measurementTime" : "1500 ms",
+        "measurementBatchSize" : 1,
+        "params" : {
+            "dataSetSize" : "1000000",
+            "database" : "NITRITE_FILE"
+        },
+        "primaryMetric" : {
+            "score" : 36862.491167,
+            "scoreError" : 6870.79162433114,
+            "scoreConfidence" : [
+                29991.69954266886,
+                43733.28279133114
+            ],
+            "scorePercentiles" : {
+                "0.0" : 36454.122558,
+                "50.0" : 36937.205936,
+                "90.0" : 37196.145007,
+                "95.0" : 37196.145007,
+                "99.0" : 37196.145007,
+                "99.9" : 37196.145007,
+                "99.99" : 37196.145007,
+                "99.999" : 37196.145007,
+                "99.9999" : 37196.145007,
+                "100.0" : 37196.145007
+            },
+            "scoreUnit" : "ms/op",
+            "rawData" : [
+                [
+                    36454.122558,
+                    36937.205936,
+                    37196.145007
+                ]
+            ]
+        },
+        "secondaryMetrics" : {
+        }
+    },
+    {
+        "jmhVersion" : "1.23",
+        "benchmark" : "org.dizitart.no2.v3.jmh.NitriteBenchmark.queryWithJacksonMapper",
+        "mode" : "avgt",
+        "threads" : 1,
+        "forks" : 1,
+        "jvm" : "/home/anindya/app/java/jdk1.8.0_211/jre/bin/java",
+        "jvmArgs" : [
+            "-Xmx8192m",
+            "-Xmn6144m"
+        ],
+        "jdkVersion" : "1.8.0_211",
+        "vmName" : "Java HotSpot(TM) 64-Bit Server VM",
+        "vmVersion" : "25.211-b12",
+        "warmupIterations" : 3,
+        "warmupTime" : "1500 ms",
+        "warmupBatchSize" : 1,
+        "measurementIterations" : 3,
+        "measurementTime" : "1500 ms",
+        "measurementBatchSize" : 1,
+        "params" : {
+            "dataSetSize" : "1000000",
+            "database" : "NITRITE_MEMORY"
+        },
+        "primaryMetric" : {
+            "score" : 828.0357876666667,
+            "scoreError" : 54.246858397539036,
+            "scoreConfidence" : [
+                773.7889292691276,
+                882.2826460642058
+            ],
+            "scorePercentiles" : {
+                "0.0" : 825.237359,
+                "50.0" : 827.712207,
+                "90.0" : 831.157797,
+                "95.0" : 831.157797,
+                "99.0" : 831.157797,
+                "99.9" : 831.157797,
+                "99.99" : 831.157797,
+                "99.999" : 831.157797,
+                "99.9999" : 831.157797,
+                "100.0" : 831.157797
+            },
+            "scoreUnit" : "ms/op",
+            "rawData" : [
+                [
+                    827.712207,
+                    825.237359,
+                    831.157797
+                ]
+            ]
+        },
+        "secondaryMetrics" : {
+        }
+    },
+    {
+        "jmhVersion" : "1.23",
+        "benchmark" : "org.dizitart.no2.v3.jmh.NitriteBenchmark.queryWithMappable",
+        "mode" : "avgt",
+        "threads" : 1,
+        "forks" : 1,
+        "jvm" : "/home/anindya/app/java/jdk1.8.0_211/jre/bin/java",
+        "jvmArgs" : [
+            "-Xmx8192m",
+            "-Xmn6144m"
+        ],
+        "jdkVersion" : "1.8.0_211",
+        "vmName" : "Java HotSpot(TM) 64-Bit Server VM",
+        "vmVersion" : "25.211-b12",
+        "warmupIterations" : 3,
+        "warmupTime" : "1500 ms",
+        "warmupBatchSize" : 1,
+        "measurementIterations" : 3,
+        "measurementTime" : "1500 ms",
+        "measurementBatchSize" : 1,
+        "params" : {
+            "dataSetSize" : "1000000",
+            "database" : "SQLITE_FILE"
+        },
+        "primaryMetric" : {
+            "score" : 0.013227905850887263,
+            "scoreError" : 0.001699730277984748,
+            "scoreConfidence" : [
+                0.011528175572902515,
+                0.014927636128872011
+            ],
+            "scorePercentiles" : {
+                "0.0" : 0.013121991716452508,
+                "50.0" : 0.013264525403646523,
+                "90.0" : 0.013297200432562757,
+                "95.0" : 0.013297200432562757,
+                "99.0" : 0.013297200432562757,
+                "99.9" : 0.013297200432562757,
+                "99.99" : 0.013297200432562757,
+                "99.999" : 0.013297200432562757,
+                "99.9999" : 0.013297200432562757,
+                "100.0" : 0.013297200432562757
+            },
+            "scoreUnit" : "ms/op",
+            "rawData" : [
+                [
+                    0.013121991716452508,
+                    0.013297200432562757,
+                    0.013264525403646523
+                ]
+            ]
+        },
+        "secondaryMetrics" : {
+        }
+    },
+    {
+        "jmhVersion" : "1.23",
+        "benchmark" : "org.dizitart.no2.v3.jmh.NitriteBenchmark.queryWithMappable",
+        "mode" : "avgt",
+        "threads" : 1,
+        "forks" : 1,
+        "jvm" : "/home/anindya/app/java/jdk1.8.0_211/jre/bin/java",
+        "jvmArgs" : [
+            "-Xmx8192m",
+            "-Xmn6144m"
+        ],
+        "jdkVersion" : "1.8.0_211",
+        "vmName" : "Java HotSpot(TM) 64-Bit Server VM",
+        "vmVersion" : "25.211-b12",
+        "warmupIterations" : 3,
+        "warmupTime" : "1500 ms",
+        "warmupBatchSize" : 1,
+        "measurementIterations" : 3,
+        "measurementTime" : "1500 ms",
+        "measurementBatchSize" : 1,
+        "params" : {
+            "dataSetSize" : "1000000",
+            "database" : "SQLITE_MEMORY"
+        },
+        "primaryMetric" : {
+            "score" : 0.004518776647597319,
+            "scoreError" : 2.8503513891535486E-4,
+            "scoreConfidence" : [
+                0.004233741508681964,
+                0.004803811786512674
+            ],
+            "scorePercentiles" : {
+                "0.0" : 0.004500736103568804,
+                "50.0" : 0.004527724391458538,
+                "90.0" : 0.004527869447764617,
+                "95.0" : 0.004527869447764617,
+                "99.0" : 0.004527869447764617,
+                "99.9" : 0.004527869447764617,
+                "99.99" : 0.004527869447764617,
+                "99.999" : 0.004527869447764617,
+                "99.9999" : 0.004527869447764617,
+                "100.0" : 0.004527869447764617
+            },
+            "scoreUnit" : "ms/op",
+            "rawData" : [
+                [
+                    0.004527724391458538,
+                    0.004527869447764617,
+                    0.004500736103568804
+                ]
+            ]
+        },
+        "secondaryMetrics" : {
+        }
+    },
+    {
+        "jmhVersion" : "1.23",
+        "benchmark" : "org.dizitart.no2.v3.jmh.NitriteBenchmark.queryWithMappable",
+        "mode" : "avgt",
+        "threads" : 1,
+        "forks" : 1,
+        "jvm" : "/home/anindya/app/java/jdk1.8.0_211/jre/bin/java",
+        "jvmArgs" : [
+            "-Xmx8192m",
+            "-Xmn6144m"
+        ],
+        "jdkVersion" : "1.8.0_211",
+        "vmName" : "Java HotSpot(TM) 64-Bit Server VM",
+        "vmVersion" : "25.211-b12",
+        "warmupIterations" : 3,
+        "warmupTime" : "1500 ms",
+        "warmupBatchSize" : 1,
+        "measurementIterations" : 3,
+        "measurementTime" : "1500 ms",
+        "measurementBatchSize" : 1,
+        "params" : {
+            "dataSetSize" : "1000000",
+            "database" : "NITRITE_FILE"
+        },
+        "primaryMetric" : {
+            "score" : 38405.77113566667,
+            "scoreError" : 637.3917289388191,
+            "scoreConfidence" : [
+                37768.37940672785,
+                39043.16286460549
+            ],
+            "scorePercentiles" : {
+                "0.0" : 38372.043909,
+                "50.0" : 38403.464696,
+                "90.0" : 38441.804802,
+                "95.0" : 38441.804802,
+                "99.0" : 38441.804802,
+                "99.9" : 38441.804802,
+                "99.99" : 38441.804802,
+                "99.999" : 38441.804802,
+                "99.9999" : 38441.804802,
+                "100.0" : 38441.804802
+            },
+            "scoreUnit" : "ms/op",
+            "rawData" : [
+                [
+                    38403.464696,
+                    38441.804802,
+                    38372.043909
+                ]
+            ]
+        },
+        "secondaryMetrics" : {
+        }
+    },
+    {
+        "jmhVersion" : "1.23",
+        "benchmark" : "org.dizitart.no2.v3.jmh.NitriteBenchmark.queryWithMappable",
+        "mode" : "avgt",
+        "threads" : 1,
+        "forks" : 1,
+        "jvm" : "/home/anindya/app/java/jdk1.8.0_211/jre/bin/java",
+        "jvmArgs" : [
+            "-Xmx8192m",
+            "-Xmn6144m"
+        ],
+        "jdkVersion" : "1.8.0_211",
+        "vmName" : "Java HotSpot(TM) 64-Bit Server VM",
+        "vmVersion" : "25.211-b12",
+        "warmupIterations" : 3,
+        "warmupTime" : "1500 ms",
+        "warmupBatchSize" : 1,
+        "measurementIterations" : 3,
+        "measurementTime" : "1500 ms",
+        "measurementBatchSize" : 1,
+        "params" : {
+            "dataSetSize" : "1000000",
+            "database" : "NITRITE_MEMORY"
+        },
+        "primaryMetric" : {
+            "score" : 805.0160095000001,
+            "scoreError" : 127.47094265792867,
+            "scoreConfidence" : [
+                677.5450668420715,
+                932.4869521579287
+            ],
+            "scorePercentiles" : {
+                "0.0" : 797.23557,
+                "50.0" : 807.0573615,
+                "90.0" : 810.755097,
+                "95.0" : 810.755097,
+                "99.0" : 810.755097,
+                "99.9" : 810.755097,
+                "99.99" : 810.755097,
+                "99.999" : 810.755097,
+                "99.9999" : 810.755097,
+                "100.0" : 810.755097
+            },
+            "scoreUnit" : "ms/op",
+            "rawData" : [
+                [
+                    797.23557,
+                    807.0573615,
+                    810.755097
+                ]
+            ]
+        },
+        "secondaryMetrics" : {
+        }
+    }
+]
+
+
