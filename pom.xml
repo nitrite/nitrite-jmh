@@ -14,5 +14,16 @@
         <module>nitrite-v4-rocksdb</module>
     </modules>
 
-
+    <repositories>
+        <repository>
+            <id>snapshot</id>
+            <url>http://oss.sonatype.org/content/repositories/snapshots</url>
+            <releases>
+                <enabled>false</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
 </project>
