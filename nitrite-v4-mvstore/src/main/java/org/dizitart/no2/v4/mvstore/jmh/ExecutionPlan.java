@@ -38,7 +38,7 @@ public class ExecutionPlan {
     private ObjectRepository<ArbitraryData> repository = null;
     @Param({"SQLITE_FILE", "SQLITE_MEMORY", "NITRITE_FILE", "NITRITE_MEMORY"})
     private Database database;
-    @Param({"10000", "50000", "100000", "1000000"})
+    @Param({"10000", "50000", "100000"})
     private int dataSetSize;
 
     private ArbitraryData randomDatum() {
