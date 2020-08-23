@@ -92,11 +92,12 @@ public class ExecutionPlan {
         sqliteQuery = sqliteConnection.prepareStatement(BenchmarkParam.SELECT_INDEX1_STATEMENT);
     }
 
-    private void tearDownSQLite() {
+    private void tearDownSQLite() throws IOException {
         Optional.ofNullable(sqliteQuery)
                 .ifPresent(Unchecked.consumer(Statement::close));
         Optional.ofNullable(sqliteConnection)
                 .ifPresent(Unchecked.consumer(Connection::close));
+        Files.deleteIfExists(Paths.get(String.format("%s/sqlite.db", BenchmarkParam.TMP)));
     }
 
     private void setupNitrite(@Nullable String path) throws IOException {
@@ -114,14 +115,14 @@ public class ExecutionPlan {
         FileUtils.deleteDirectory(new File(path));
     }
 
-    private void tearDownNitrite() {
+    private void tearDownNitrite() throws IOException {
         Optional.ofNullable(nitrite)
                 .ifPresent(Nitrite::close);
+        FileUtils.deleteDirectory(new File(String.format("%s/nitrite-v4-rocksdb.db", BenchmarkParam.TMP)));
     }
 
     public Collection<ArbitraryData> inquireNitrite(int indexValue, double value) {
         return repository.find(where("index1").eq(indexValue).and(where("number1").eq(value))).toList();
-//        return repository.find(where("index1").eq(indexValue)).toList();
     }
 
     public Collection<ArbitraryData> inquireSQLite(int indexValue, double value) throws SQLException {
@@ -160,7 +161,7 @@ public class ExecutionPlan {
     }
 
     @TearDown
-    public void tearDown() {
+    public void tearDown() throws IOException {
         switch (database) {
             case SQLITE_FILE:
                 tearDownSQLite();

@@ -12,7 +12,6 @@ import java.util.concurrent.TimeUnit;
  */
 @BenchmarkMode({
         Mode.AverageTime,
-        Mode.Throughput,
 })
 @OutputTimeUnit(TimeUnit.MILLISECONDS)
 public class NitriteBenchmark {

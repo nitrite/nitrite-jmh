@@ -1,8 +1,6 @@
 package org.dizitart.no2.v3.jmh;
 
 import org.apache.commons.text.RandomStringGenerator;
-import uk.co.jemos.podam.api.PodamFactory;
-import uk.co.jemos.podam.api.PodamFactoryImpl;
 
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;

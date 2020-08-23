@@ -13,8 +13,7 @@ import static org.dizitart.no2.v3.jmh.BenchmarkParam.*;
  * @author Anindya Chatterjee
  */
 @BenchmarkMode({
-        Mode.AverageTime,
-        Mode.Throughput,
+        Mode.AverageTime
 })
 @OutputTimeUnit(TimeUnit.MILLISECONDS)
 public class NitriteBenchmark {

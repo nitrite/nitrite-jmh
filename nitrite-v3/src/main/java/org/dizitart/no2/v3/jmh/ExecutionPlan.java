@@ -89,11 +89,12 @@ public class ExecutionPlan {
         sqliteQuery = sqliteConnection.prepareStatement(SELECT_INDEX1_STATEMENT);
     }
 
-    private void tearDownSQLite() {
+    private void tearDownSQLite() throws IOException {
         Optional.ofNullable(sqliteQuery)
                 .ifPresent(Unchecked.consumer(Statement::close));
         Optional.ofNullable(sqliteConnection)
                 .ifPresent(Unchecked.consumer(Connection::close));
+        Files.deleteIfExists(Paths.get(String.format("%s/sqlite.db", TMP)));
     }
 
     private void setupNitrite(@Nullable String path) {
@@ -109,14 +110,14 @@ public class ExecutionPlan {
         Files.deleteIfExists(Paths.get(path));
     }
 
-    private void tearDownNitrite() {
+    private void tearDownNitrite() throws IOException {
         Optional.ofNullable(nitrite)
                 .ifPresent(Nitrite::close);
+        Files.deleteIfExists(Paths.get(String.format("%s/sqlite.db", TMP)));
     }
 
     public Collection<ArbitraryData> inquireNitrite(int indexValue, double value) {
         return repository.find(and(eq("index1", indexValue), eq("number1", value))).toList();
-//        return repository.find(eq("index1", indexValue)).toList();
     }
 
     public Collection<ArbitraryData> inquireSQLite(int indexValue, double value) throws SQLException {
@@ -157,7 +158,7 @@ public class ExecutionPlan {
     }
 
     @TearDown
-    public void tearDown() {
+    public void tearDown() throws IOException {
         switch (database) {
             case SQLITE_FILE:
             case SQLITE_MEMORY:

@@ -42,7 +42,6 @@ public class BenchmarkParam {
 
     public final static String SELECT_INDEX1_STATEMENT =
             "SELECT * FROM arbitrary WHERE index1=? and number1=?";
-//            "SELECT * FROM arbitrary WHERE index1=?";
 
     static {
         try {
