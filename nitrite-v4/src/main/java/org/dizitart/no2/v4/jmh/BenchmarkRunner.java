@@ -1,4 +1,4 @@
-package org.dizitart.no2.v4.mvstore.jmh;
+package org.dizitart.no2.v4.jmh;
 
 /**
  * @author Anindya Chatterjee

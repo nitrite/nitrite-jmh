@@ -10,8 +10,7 @@
     <version>1.0-SNAPSHOT</version>
     <modules>
         <module>nitrite-v3</module>
-        <module>nitrite-v4-mvstore</module>
-        <module>nitrite-v4-rocksdb</module>
+        <module>nitrite-v4</module>
     </modules>
 
     <repositories>

@@ -1,4 +1,4 @@
-package org.dizitart.no2.v4.rocksdb.jmh;
+package org.dizitart.no2.v4.jmh;
 
 import org.apache.commons.text.RandomStringGenerator;
 

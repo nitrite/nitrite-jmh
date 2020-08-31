@@ -1,9 +1,10 @@
-package org.dizitart.no2.v4.rocksdb.jmh;
+package org.dizitart.no2.v4.jmh;
 
 import lombok.val;
 import org.openjdk.jmh.annotations.*;
 import org.openjdk.jmh.infra.Blackhole;
 
+import java.sql.SQLException;
 import java.util.Collection;
 import java.util.concurrent.TimeUnit;
 
@@ -11,7 +12,7 @@ import java.util.concurrent.TimeUnit;
  * @author Anindya Chatterjee
  */
 @BenchmarkMode({
-        Mode.AverageTime
+        Mode.AverageTime,
 })
 @OutputTimeUnit(TimeUnit.MILLISECONDS)
 public class NitriteBenchmark {
@@ -25,15 +26,7 @@ public class NitriteBenchmark {
     public void queryWithJacksonMapper(ExecutionPlan plan, Blackhole blackhole) throws Exception {
         val indexValue = BenchmarkParam.RANDOM.nextInt();
         val value = BenchmarkParam.RANDOM.nextDouble();
-        Collection<ArbitraryData> results = null;
-        switch (plan.getDatabase()) {
-            case NITRITE_FILE:
-                results = plan.inquireNitrite(indexValue, value);
-                break;
-            case SQLITE_FILE:
-                results = plan.inquireSQLite(indexValue, value);
-                break;
-        }
+        Collection<ArbitraryData> results = query(plan, indexValue, value);
         blackhole.consume(results);
     }
 
@@ -46,15 +39,25 @@ public class NitriteBenchmark {
     public void queryWithMappable(MappableExecutionPlan plan, Blackhole blackhole) throws Exception {
         val indexValue = BenchmarkParam.RANDOM.nextInt();
         val value = BenchmarkParam.RANDOM.nextDouble();
-        Collection<MappableArbitraryData> results = null;
+        Collection<MappableArbitraryData> results = query(plan, indexValue, value);
+        blackhole.consume(results);
+    }
+
+    private <T> Collection<T> query(BaseExecutionPlan<T> plan, int indexValue, double value) throws SQLException {
+        Collection<T> results = null;
         switch (plan.getDatabase()) {
-            case NITRITE_FILE:
+            case NITRITE_MVSTORE_FILE:
+            case NITRITE_MAPDB_FILE:
+            case NITRITE_ROCKSDB_FILE:
+            case NITRITE_MVSTORE_MEMORY:
+            case NITRITE_MAPDB_MEMORY:
                 results = plan.inquireNitrite(indexValue, value);
                 break;
             case SQLITE_FILE:
+            case SQLITE_MEMORY:
                 results = plan.inquireSQLite(indexValue, value);
                 break;
         }
-        blackhole.consume(results);
+        return results;
     }
 }

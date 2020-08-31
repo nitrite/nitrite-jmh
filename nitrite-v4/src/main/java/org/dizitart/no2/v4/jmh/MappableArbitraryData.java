@@ -1,4 +1,4 @@
-package org.dizitart.no2.v4.mvstore.jmh;
+package org.dizitart.no2.v4.jmh;
 
 import lombok.Data;
 import lombok.experimental.Accessors;
@@ -12,7 +12,7 @@ import org.dizitart.no2.repository.annotations.Id;
  */
 @Data
 @Accessors(fluent = true, chain = true)
-public class ArbitraryData implements Mappable {
+public class MappableArbitraryData implements Mappable {
     @Id
     private Integer id;
     private String text;
@@ -22,6 +22,7 @@ public class ArbitraryData implements Mappable {
     private Boolean flag1;
     private Boolean flag2;
 
+    @Override
     public Document write(NitriteMapper nitriteMapper) {
         return Document.createDocument("id", id)
                 .put("text", text)
@@ -32,6 +33,7 @@ public class ArbitraryData implements Mappable {
                 .put("flag2", flag2);
     }
 
+    @Override
     public void read(NitriteMapper nitriteMapper, Document document) {
         id = document.get("id", Integer.class);
         text = document.get("text", String.class);
