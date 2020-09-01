@@ -20,7 +20,7 @@
         <dependencies>
             <dependency>
                 <groupId>org.dizitart</groupId>
-                <artifactId>nitrite-platform</artifactId>
+                <artifactId>nitrite-bom</artifactId>
                 <version>4.0.0-SNAPSHOT</version>
                 <type>pom</type>
                 <scope>import</scope>
