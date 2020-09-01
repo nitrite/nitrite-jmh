@@ -16,35 +16,42 @@
         <maven.compiler.target>1.8</maven.compiler.target>
     </properties>
 
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.dizitart</groupId>
+                <artifactId>nitrite-platform</artifactId>
+                <version>4.0.0-SNAPSHOT</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
     <dependencies>
         <dependency>
             <groupId>org.dizitart</groupId>
             <artifactId>nitrite</artifactId>
-            <version>4.0.0-SNAPSHOT</version>
         </dependency>
 
         <dependency>
             <groupId>org.dizitart</groupId>
             <artifactId>nitrite-mvstore-adapter</artifactId>
-            <version>4.0.0-SNAPSHOT</version>
         </dependency>
 
         <dependency>
             <groupId>org.dizitart</groupId>
             <artifactId>nitrite-rocksdb-adapter</artifactId>
-            <version>4.0.0-SNAPSHOT</version>
         </dependency>
 
         <dependency>
             <groupId>org.dizitart</groupId>
             <artifactId>nitrite-mapdb-adapter</artifactId>
-            <version>4.0.0-SNAPSHOT</version>
         </dependency>
 
         <dependency>
             <groupId>org.dizitart</groupId>
             <artifactId>nitrite-jackson-mapper</artifactId>
-            <version>4.0.0-SNAPSHOT</version>
         </dependency>
 
         <dependency>
