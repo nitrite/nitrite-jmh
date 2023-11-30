@@ -2,16 +2,15 @@ package org.dizitart.no2.v4.jmh;
 
 import lombok.*;
 import lombok.experimental.Accessors;
-import org.apache.commons.io.FileUtils;
 import org.dizitart.no2.Nitrite;
 import org.dizitart.no2.common.util.StringUtils;
-import org.dizitart.no2.mapdb.MapDBModule;
 import org.dizitart.no2.mvstore.MVStoreModule;
 import org.dizitart.no2.rocksdb.RocksDBModule;
 import org.dizitart.no2.store.StoreModule;
 import org.jetbrains.annotations.Nullable;
 import org.jooq.lambda.Unchecked;
 import org.openjdk.jmh.annotations.*;
+import org.apache.commons.io.FileUtils;
 
 import java.io.File;
 import java.io.IOException;
@@ -37,10 +36,8 @@ public abstract class BaseExecutionPlan<T> {
             "SQLITE_FILE",
             "SQLITE_MEMORY",
             "NITRITE_MVSTORE_FILE",
-            "NITRITE_MAPDB_FILE",
             "NITRITE_ROCKSDB_FILE",
             "NITRITE_MVSTORE_MEMORY",
-            "NITRITE_MAPDB_MEMORY"
     })
     protected Database database;
 
@@ -65,10 +62,8 @@ public abstract class BaseExecutionPlan<T> {
                 insertDataIntoSQLite(data);
                 break;
             case NITRITE_MVSTORE_FILE:
-            case NITRITE_MAPDB_FILE:
             case NITRITE_ROCKSDB_FILE:
             case NITRITE_MVSTORE_MEMORY:
-            case NITRITE_MAPDB_MEMORY:
                 setupNitrite(database);
                 insertDataIntoNitrite(data);
                 break;
@@ -83,10 +78,8 @@ public abstract class BaseExecutionPlan<T> {
                 tearDownSQLite();
                 break;
             case NITRITE_MVSTORE_FILE:
-            case NITRITE_MAPDB_FILE:
             case NITRITE_ROCKSDB_FILE:
             case NITRITE_MVSTORE_MEMORY:
-            case NITRITE_MAPDB_MEMORY:
                 tearDownNitrite(database);
                 break;
         }
@@ -98,18 +91,10 @@ public abstract class BaseExecutionPlan<T> {
             case NITRITE_MVSTORE_MEMORY:
                 storeModule = MVStoreModule.withConfig().build();
                 break;
-            case NITRITE_MAPDB_MEMORY:
-                storeModule = MapDBModule.withConfig().build();
-                break;
             case NITRITE_MVSTORE_FILE:
                 assert db.path != null;
                 Files.deleteIfExists(Paths.get(db.path));
                 storeModule = MVStoreModule.withConfig().filePath(db.path).build();
-                break;
-            case NITRITE_MAPDB_FILE:
-                assert db.path != null;
-                Files.deleteIfExists(Paths.get(db.path));
-                storeModule = MapDBModule.withConfig().filePath(db.path).build();
                 break;
             case NITRITE_ROCKSDB_FILE:
                 assert db.path != null;
@@ -158,9 +143,7 @@ public abstract class BaseExecutionPlan<T> {
     @RequiredArgsConstructor
     public enum Database {
         NITRITE_MVSTORE_MEMORY(null),
-        NITRITE_MAPDB_MEMORY(null),
         NITRITE_MVSTORE_FILE(String.format("%s/nitrite-mvstore-v4.db", BenchmarkParam.TMP)),
-        NITRITE_MAPDB_FILE(String.format("%s/nitrite-mapdb-v4.db", BenchmarkParam.TMP)),
         NITRITE_ROCKSDB_FILE(String.format("%s/nitrite-rocksdb-v4.db", BenchmarkParam.TMP)),
         SQLITE_MEMORY(":memory:"),
         SQLITE_FILE(String.format("%s/sqlite.db", BenchmarkParam.TMP));

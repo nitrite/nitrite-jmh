@@ -36,10 +36,10 @@ public class NitriteBenchmark {
             "-Xmn6144m"})
     @Warmup(iterations = BenchmarkParam.WARMUPS, time = BenchmarkParam.MILLISECONDS, timeUnit = TimeUnit.MILLISECONDS)
     @Measurement(iterations = BenchmarkParam.ITERATIONS, time = BenchmarkParam.MILLISECONDS, timeUnit = TimeUnit.MILLISECONDS)
-    public void queryWithMappable(MappableExecutionPlan plan, Blackhole blackhole) throws Exception {
+    public void queryWithMappable(EntityConverterExecutionPlan plan, Blackhole blackhole) throws Exception {
         val indexValue = BenchmarkParam.RANDOM.nextInt();
         val value = BenchmarkParam.RANDOM.nextDouble();
-        Collection<MappableArbitraryData> results = query(plan, indexValue, value);
+        Collection<ArbitraryDataConverter> results = query(plan, indexValue, value);
         blackhole.consume(results);
     }
 
@@ -47,10 +47,8 @@ public class NitriteBenchmark {
         Collection<T> results = null;
         switch (plan.getDatabase()) {
             case NITRITE_MVSTORE_FILE:
-            case NITRITE_MAPDB_FILE:
             case NITRITE_ROCKSDB_FILE:
             case NITRITE_MVSTORE_MEMORY:
-            case NITRITE_MAPDB_MEMORY:
                 results = plan.inquireNitrite(indexValue, value);
                 break;
             case SQLITE_FILE:

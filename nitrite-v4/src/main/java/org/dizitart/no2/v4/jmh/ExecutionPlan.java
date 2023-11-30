@@ -4,10 +4,10 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.val;
 import org.dizitart.no2.Nitrite;
+import org.dizitart.no2.common.mapper.JacksonMapperModule;
 import org.dizitart.no2.exceptions.NitriteIOException;
 import org.dizitart.no2.index.IndexOptions;
 import org.dizitart.no2.index.IndexType;
-import org.dizitart.no2.mapper.JacksonMapperModule;
 import org.dizitart.no2.repository.ObjectRepository;
 import org.dizitart.no2.store.StoreModule;
 import org.openjdk.jmh.annotations.Scope;
@@ -41,7 +41,7 @@ public class ExecutionPlan extends BaseExecutionPlan<ArbitraryData> {
                     .loadModule(new JacksonMapperModule())
                     .openOrCreate();
             repository = nitrite.getRepository(ArbitraryData.class);
-            repository.createIndex("index1", IndexOptions.indexOptions(IndexType.NonUnique));
+            repository.createIndex(IndexOptions.indexOptions(IndexType.NON_UNIQUE), "index1");
         } else {
             throw new NitriteIOException("failed to setup nitrite database");
         }
