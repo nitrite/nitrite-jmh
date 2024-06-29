@@ -12,8 +12,8 @@
     <artifactId>nitrite-v4</artifactId>
 
     <properties>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
     </properties>
 
     <dependencyManagement>
@@ -21,7 +21,7 @@
             <dependency>
                 <groupId>org.dizitart</groupId>
                 <artifactId>nitrite-bom</artifactId>
-                <version>4.2.0-SNAPSHOT</version>
+                <version>4.3.0-SNAPSHOT</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
