@@ -30,22 +30,22 @@ import static org.dizitart.no2.filters.FluentFilter.where;
 @Data
 @State(Scope.Benchmark)
 @EqualsAndHashCode(callSuper = true)
-public class EntityConverterExecutionPlan extends BaseExecutionPlan<ArbitraryDataConverter> {
-    private ObjectRepository<ArbitraryDataConverter> repository = null;
+public class EntityConverterExecutionPlan extends BaseExecutionPlan<ArbitraryData> {
+    private ObjectRepository<ArbitraryData> repository = null;
 
     @Override
     protected void setupNitrite(Database db) throws IOException {
         StoreModule storeModule = getStoreModule(db);
 
         SimpleNitriteMapper nitriteMapper = new SimpleNitriteMapper();
-        nitriteMapper.registerEntityConverter(new ArbitraryDataConverter());
+        nitriteMapper.registerEntityConverter(new ArbitraryData.Converter());
 
         if (storeModule != null) {
             nitrite = Nitrite.builder()
                     .loadModule(storeModule)
                     .loadModule(NitriteModule.module(nitriteMapper))
                     .openOrCreate();
-            repository = nitrite.getRepository(ArbitraryDataConverter.class);
+            repository = nitrite.getRepository(ArbitraryData.class);
             repository.createIndex(IndexOptions.indexOptions(IndexType.NON_UNIQUE), "index1");
         } else {
             throw new NitriteIOException("failed to setup nitrite database");
@@ -53,23 +53,23 @@ public class EntityConverterExecutionPlan extends BaseExecutionPlan<ArbitraryDat
     }
 
     @Override
-    protected ArbitraryDataConverter[] randomData() {
+    protected ArbitraryData[] randomData() {
         sequence = new AtomicInteger(0);
         return IntStream.range(0, dataSetSize)
                 .mapToObj(index -> randomDatum())
-                .toArray(ArbitraryDataConverter[]::new);
+                .toArray(ArbitraryData[]::new);
     }
 
     @Override
-    protected void insertDataIntoNitrite(ArbitraryDataConverter[] data) {
+    protected void insertDataIntoNitrite(ArbitraryData[] data) {
         repository.insert(data);
     }
 
     @Override
-    protected void insertDataIntoSQLite(ArbitraryDataConverter[] data) throws SQLException {
+    protected void insertDataIntoSQLite(ArbitraryData[] data) throws SQLException {
         sqliteConnection.setAutoCommit(false);
         val statement = sqliteConnection.prepareStatement(BenchmarkParam.INSERT_TABLE_STATEMENT);
-        for (ArbitraryDataConverter datum : data) {
+        for (ArbitraryData datum : data) {
             statement.setInt(1, datum.id());
             statement.setString(2, datum.text());
             statement.setDouble(3, datum.number1());
@@ -84,19 +84,19 @@ public class EntityConverterExecutionPlan extends BaseExecutionPlan<ArbitraryDat
     }
 
     @Override
-    public Collection<ArbitraryDataConverter> inquireNitrite(int indexValue, double value) {
+    public Collection<ArbitraryData> inquireNitrite(int indexValue, double value) {
         return repository.find(where("index1").eq(indexValue).and(where("number1").eq(value))).toList();
     }
 
     @Override
-    public Collection<ArbitraryDataConverter> inquireSQLite(int indexValue, double value) throws SQLException {
+    public Collection<ArbitraryData> inquireSQLite(int indexValue, double value) throws SQLException {
         sqliteQuery.clearParameters();
         sqliteQuery.setInt(1, indexValue);
         sqliteQuery.setDouble(2, value);
         val result = sqliteQuery.executeQuery();
-        val data = new ArrayList<ArbitraryDataConverter>();
+        val data = new ArrayList<ArbitraryData>();
         while (result.next()) {
-            val datum = new ArbitraryDataConverter()
+            val datum = new ArbitraryData()
                     .id(result.getInt("id"))
                     .text(result.getString("text"))
                     .number1(result.getDouble("number1"))
@@ -109,8 +109,8 @@ public class EntityConverterExecutionPlan extends BaseExecutionPlan<ArbitraryDat
         return data;
     }
 
-    private ArbitraryDataConverter randomDatum() {
-        return new ArbitraryDataConverter()
+    private ArbitraryData randomDatum() {
+        return new ArbitraryData()
                 .id(sequence.incrementAndGet())
                 .flag1(BenchmarkParam.RANDOM.nextBoolean())
                 .flag2(BenchmarkParam.RANDOM.nextBoolean())

@@ -1,6 +1,5 @@
 package org.dizitart.no2.v4.jmh;
 
-import lombok.val;
 import org.openjdk.jmh.annotations.*;
 import org.openjdk.jmh.infra.Blackhole;
 
@@ -24,8 +23,8 @@ public class NitriteBenchmark {
     @Warmup(iterations = BenchmarkParam.WARMUPS, time = BenchmarkParam.MILLISECONDS, timeUnit = TimeUnit.MILLISECONDS)
     @Measurement(iterations = BenchmarkParam.ITERATIONS, time = BenchmarkParam.MILLISECONDS, timeUnit = TimeUnit.MILLISECONDS)
     public void queryWithJacksonMapper(ExecutionPlan plan, Blackhole blackhole) throws Exception {
-        val indexValue = BenchmarkParam.RANDOM.nextInt();
-        val value = BenchmarkParam.RANDOM.nextDouble();
+        var indexValue = BenchmarkParam.RANDOM.nextInt();
+        var value = BenchmarkParam.RANDOM.nextDouble();
         Collection<ArbitraryData> results = query(plan, indexValue, value);
         blackhole.consume(results);
     }
@@ -37,9 +36,9 @@ public class NitriteBenchmark {
     @Warmup(iterations = BenchmarkParam.WARMUPS, time = BenchmarkParam.MILLISECONDS, timeUnit = TimeUnit.MILLISECONDS)
     @Measurement(iterations = BenchmarkParam.ITERATIONS, time = BenchmarkParam.MILLISECONDS, timeUnit = TimeUnit.MILLISECONDS)
     public void queryWithMappable(EntityConverterExecutionPlan plan, Blackhole blackhole) throws Exception {
-        val indexValue = BenchmarkParam.RANDOM.nextInt();
-        val value = BenchmarkParam.RANDOM.nextDouble();
-        Collection<ArbitraryDataConverter> results = query(plan, indexValue, value);
+        var indexValue = BenchmarkParam.RANDOM.nextInt();
+        var value = BenchmarkParam.RANDOM.nextDouble();
+        Collection<ArbitraryData> results = query(plan, indexValue, value);
         blackhole.consume(results);
     }
 
